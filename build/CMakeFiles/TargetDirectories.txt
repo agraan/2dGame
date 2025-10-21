@@ -1,3 +1,0 @@
-/home/argan/Perso/2dGame/build/CMakeFiles/MyGame.dir
-/home/argan/Perso/2dGame/build/CMakeFiles/edit_cache.dir
-/home/argan/Perso/2dGame/build/CMakeFiles/rebuild_cache.dir
