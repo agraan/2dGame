@@ -28,7 +28,7 @@ void Entity::SetDirection(const Math::Vector2& Direction) {
 	m_Direction = Direction;
 }
 
-void Entity::Move(const Math::Vector2& delta) { m_Position += delta * m_Direction; }
+void Entity::Move(const Math::Vector2& delta, float dt) { m_Position += delta * m_Direction * dt; }
 
 void Entity::Update(Renderer& renderer) {
 	m_Sprite->SetPosition(static_cast<int>(m_Position.x), static_cast<int>(m_Position.y));

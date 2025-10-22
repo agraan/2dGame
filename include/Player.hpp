@@ -15,6 +15,6 @@ class Player : public Entity {
 		Player() : Entity() {}
 		using Entity::Entity;
 
-		void HandleInput(const Uint8* keyState);
+		void HandleInput(const Uint8* keyState, float dt);
 		bool CheckCollision(Pokemon poke);
 };

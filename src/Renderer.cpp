@@ -22,7 +22,7 @@ Renderer& Renderer::operator=(const Renderer& src) {
 }
 
 void Renderer::Clear() {
-	SDL_SetRenderDrawColor(m_Renderer, 0, 0, 0, 255);
+	SDL_SetRenderDrawColor(m_Renderer, 30, 30, 30, 255);
 	SDL_RenderClear(m_Renderer);
 }
 

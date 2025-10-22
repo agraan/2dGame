@@ -11,7 +11,7 @@ class Time {
 
 	public :
 
-		static void Update();
-		static float DeltaTime() { return m_DeltaTime; }
+		static void Tick();
+		static float GetDeltaTime() { return m_DeltaTime; }
 
 };

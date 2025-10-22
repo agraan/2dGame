@@ -3,5 +3,6 @@
 GameConfig g_GameConfig = {
 	1600,
 	900,
+	nullptr,
 	false
 };

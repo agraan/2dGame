@@ -8,6 +8,7 @@
 #include <string>
 #include <map>
 #include <random>
+#include <SDL2/SDL_ttf.h>
 
 #include "Globals.hpp"
 #include "Renderer.hpp"
@@ -15,6 +16,8 @@
 #include "Sprite.hpp"
 #include "Player.hpp"
 #include "Pokemon.hpp"
+#include "GameTimer.hpp"
+#include "Time.hpp"
 #include "Math.hpp"
 
 class Game {
@@ -26,6 +29,8 @@ class Game {
 		SDL_Window* m_window = nullptr;
 		SDL_GLContext m_glContext = nullptr;
 		Renderer* m_Renderer = nullptr;
+		GameTimer m_Timer;
+		Time m_DeltaTime;
 		Player m_Player;
 		std::vector<Pokemon> m_Pokemons;
 		std::map<std::string, Texture*> m_Textures;
@@ -47,7 +52,7 @@ class Game {
 		void LoadAllTexturesFromDir(const std::string& directoryPath);
 		void AddPokemon(Math::Vector2 position, const std::string& textureKey, int width, int height);
 		void Render(void);
-		void MovePokemon(void);
+		void MovePokemon(float dt);
 		bool CheckCollisions(void);
 
 };

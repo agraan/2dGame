@@ -28,6 +28,9 @@ if (NOT TARGET SDL2::SDL2)
 		GIT_TAG release-2.30.0
 	)
 	FetchContent_MakeAvailable(SDL2)
+	if (NOT TARGET SDL2::SDL2)
+		add_library(SDL2::SDL2 ALIAS SDL2)
+	endif()
 endif()
 
 
@@ -40,6 +43,9 @@ if (NOT TARGET SDL2_image::SDL2_image)
 		GIT_TAG release-2.8.2
 	)
 	FetchContent_MakeAvailable(SDL2_image)
+	if (NOT TARGET SDL2_image::SDL2_image)
+		add_library(SDL2_image::SDL2_image ALIAS SDL2_image)
+	endif()
 endif()
 
 find_package(GLEW REQUIRED)
@@ -50,6 +56,23 @@ if (NOT TARGET GLEW::GLEW)
 		GIT_TAG glew-2.2.0
 	)
 	FetchContent_MakeAvailable(GLEW)
+	if (NOT TARGET GLEW::GLEW)
+		add_library(GLEW::GLEW ALIAS GLEW)
+	endif()
+endif()
+
+set(SDL2TTF_VENDORED ON CACHE BOOL "Use vendored FreeType" FORCE)
+find_package(SDL2_ttf CONFIG QUIET)
+if (NOT TARGET SDL2_ttf::SDL2_ttf)
+	FetchContent_Declare(
+		SDL2_ttf
+		GIT_REPOSITORY https://github.com/libsdl-org/SDL_ttf.git
+		GIT_TAG release-2.20.2
+	)
+	FetchContent_MakeAvailable(SDL2_ttf)
+	if (NOT TARGET SDL2_ttf::SDL2_ttf)
+		add_library(SDL2_ttf::SDL2_ttf ALIAS SDL2_ttf)
+	endif()
 endif()
 
 # === Executable ===
@@ -63,12 +86,13 @@ target_include_directories(MyGame PRIVATE
 	${GLEW_INCLUDE_DIRS}
 )
 
-
 # === Link Libraries ===
 target_link_libraries(MyGame PRIVATE
     SDL2::SDL2
 	SDL2_image::SDL2_image
     GLEW::GLEW
+	SDL2_ttf::SDL2_ttf
+	freetype
     OpenGL::GL
 )
 

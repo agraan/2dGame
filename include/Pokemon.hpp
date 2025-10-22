@@ -12,7 +12,7 @@ class Pokemon : public Entity {
 
 	private :
 
-		Math::Vector2 m_Acceleration = {0.3f, 0.3f};
+		Math::Vector2 m_Acceleration = {100.0f, 100.0f};
 
 	public :
 		Pokemon(std::map<std::string, Texture*>& textures,

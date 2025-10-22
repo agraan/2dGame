@@ -2,7 +2,7 @@
 
 #include "Player.hpp"
 
-void Player::HandleInput(const Uint8* keyState) {
+void Player::HandleInput(const Uint8* keyState, float dt) {
 	Math::Vector2 movement(0, 0);
 
 	if (keyState[SDL_SCANCODE_W]) { movement.y -= 1; }
@@ -14,7 +14,7 @@ void Player::HandleInput(const Uint8* keyState) {
 		movement.Normalize();
 	}
 	m_Direction = movement;
-	Move(Math::Vector2(2.0f, 2.0f));
+	Move(Math::Vector2(400.0f, 400.0f), dt);
 }
 
 bool Player::CheckCollision(Pokemon poke) {

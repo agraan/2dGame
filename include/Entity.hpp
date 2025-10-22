@@ -33,7 +33,7 @@ class Entity {
 
 		void SetPosition(const Math::Vector2& position);
 		void SetDirection(const Math::Vector2& direction);
-		void Move(const Math::Vector2& delta);
+		void Move(const Math::Vector2& delta, float dt = 1.0f);
 		void Update(Renderer& renderer);
 		virtual void HandleInput(const Uint8* keyState);
 };
