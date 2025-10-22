@@ -7,13 +7,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(OPENGL_GL_PREFERENCE GLVND)
 
-# === Dependencies ===
-find_package(OpenGL REQUIRED)
-find_package(SDL2 REQUIRED)
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(SDL2IMAGE REQUIRED SDL2_image)
-find_package(GLEW REQUIRED)
-
 #=== Source Directory ===
 set(SRC_DIR ${CMAKE_SOURCE_DIR}/../src)
 
@@ -21,6 +14,9 @@ set(SRC_DIR ${CMAKE_SOURCE_DIR}/../src)
 file(GLOB_RECURSE GAME_SOURCES
 	${SRC_DIR}/*.cpp
 )
+
+# === Dependencies ===
+include(Dependencies.cmake)
 
 # === Executable ===
 add_executable(MyGame ${GAME_SOURCES})
@@ -37,9 +33,9 @@ target_include_directories(MyGame PRIVATE
 # === Link Libraries ===
 target_link_libraries(MyGame PRIVATE
     SDL2::SDL2
+	SDL2_image::SDL2_image
     GLEW::GLEW
     OpenGL::GL
-	${SDL2IMAGE_LIBRARIES}
 )
 
 # === Output Directories ===
